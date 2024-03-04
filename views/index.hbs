@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,4 +32,45 @@
         </tbody>
     </table>
 </body>
-</html>
+</html> --}}
+
+{{#extends "base"}}
+
+{{#block "title"}}
+    Listing
+{{/block}}
+
+{{#block "content"}}
+<div class="container">
+    <h1>Listing</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Payment</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.type}}</td>
+                <td>{{this.payment}}</td>
+                <td><a href="/edit-listing/{{this.id}}" class="btn btn-warning btn-sm">Edit</a></td>
+                <td><a href="/delete-listing/{{this.id}}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/create-listing" class="btn btn-info btn-sm">Add new Listing</a>
+</div>
+{{/block}}
+
+{{/extends}}

@@ -1,0 +1,38 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Delete Listing</h1>
+    <form method="post">
+        <div class="alert alert-danger">
+            Are you Sure you want to delete {{ record.title }}
+        </div>
+    </form>
+</body>
+</html> --}}
+
+{{#extends "base"}}
+
+{{#block "title"}}
+    Listing Delete
+{{/block}}
+
+{{#block "content"}}
+<h1>Delete Listing</h1>
+<form method="post">
+    <div class="alert alert-danger">
+        Are you Sure you want to delete {{ record.title }}?
+        <div>
+            <input type="submit" value="Confirm" class="btn btn-danger"/>
+            <a href="/" class="btn btn-success">Cancel</a>
+        </div>
+    </div>
+</form>
+{{/block}}
+
+{{/extends}}

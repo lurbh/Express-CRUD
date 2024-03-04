@@ -1,0 +1,114 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Edit Listing</h1>
+    <form method="POST">
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" id="title" value="{{ record.title }}">
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="number" name="price" id="price" value="{{ record.price }}">
+        </div>
+        <div>
+            <label>Payment Type</label>
+            <input type="checkbox" name="payments" value="cod" {{#inArray record.payment "cod"}}checked{{/inArray}}><label>cod</label>
+            <input type="checkbox" name="payments" value="cheque" {{#inArray record.payment "cheque"}}checked{{/inArray}}><label>cheque</label>
+            <input type="checkbox" name="payments" value="paynow" {{#inArray record.payment "paynow"}}checked{{/inArray}}><label>paynow</label>
+        </div>
+        <div>
+            <label>Listing Type</label>
+            <input type="radio" name="type" value="eletronic" {{#eq record.type "eletronic"}}checked{{/eq}}><label>Eletronic</label>
+            <input type="radio" name="type" value="entertainment" {{#eq record.type "entertainment"}}checked{{/eq}}><label>Entertainment</label>
+            <input type="radio" name="type" value="clothing" {{#eq record.type "clothing"}}checked{{/eq}}><label>Clothing</label>
+            <input type="radio" name="type" value="education" {{#eq record.type "education"}}checked{{/eq}}><label>Education</label>
+            <input type="radio" name="type" value="sports" {{#eq record.type "sports"}}checked{{/eq}}><label>Sports</label>
+            <input type="radio" name="type" value="others" {{#eq record.type "others"}}checked{{/eq}}><label>Others</label>
+            
+        </div>
+
+        <input type="submit"/>
+    </form>
+
+    
+</body>
+</html> --}}
+{{#extends "base"}}
+
+{{#block "title"}}
+    Edit Listing
+{{/block}}
+
+{{#block "content"}}
+<div class="container">
+    <h1>Edit Listing</h1>
+    <form method="POST">
+        <div class="mb-3 row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" name="title" value="{{ record.title }}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="price" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" name="price" value="{{ record.price }}">
+            </div>
+        </div>
+        <div>
+            <label for="paymentytpe" class="col-sm-2 col-form-label">Payment Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="cod" {{#inArray record.payment "cod"}}checked{{/inArray}}>
+                <label class="form-check-label">cod</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="cheque" {{#inArray record.payment "cheque"}}checked{{/inArray}}>
+                <label class="form-check-label">cheque</label>
+            </div>
+            <div class="form-check  form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="paynow" {{#inArray record.payment "paynow"}}checked{{/inArray}}>
+                <label class="form-check-label">paynow</label>
+            </div>
+        </div>
+        <div>
+            <label for="paymentytpe" class="col-sm-2 col-form-label">Listing Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="electronic" {{#eq record.type "eletronic"}}checked{{/eq}}>
+                <label class="form-check-label">Electronic</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="entertainment" {{#eq record.type "entertainment"}}checked{{/eq}}>
+                <label class="form-check-label">Entertainment</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="clothing" {{#eq record.type "clothing"}}checked{{/eq}}>
+                <label class="form-check-label">Clothing</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="education" {{#eq record.type "education"}}checked{{/eq}}>
+                <label class="form-check-label">Education</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="sports" {{#eq record.type "sports"}}checked{{/eq}}>
+                <label class="form-check-label">Sports</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="others" {{#eq record.type "others"}}checked{{/eq}}>
+                <label class="form-check-label">Others</label>
+                {{!-- <input type="text" class="" id="others" name="others"> --}}
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+</div>
+{{/block}}
+
+{{/extends}}

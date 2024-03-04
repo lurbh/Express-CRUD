@@ -1,5 +1,9 @@
 const express = require('express');
 const hbs = require('hbs');
+const wax = require('wax-on');
+const handlebarshelpers = require("handlebars-helpers")({
+    handlebars: hbs.handlebars
+});
 
 const app = express();
 
@@ -7,6 +11,9 @@ app.use(express.urlencoded({
     extended: false
 }))
 app.set("view engine", "hbs");
+
+wax.on(hbs.handlebars);
+wax.setLayoutPath("./views/layouts");
 
 const database = [
     {
@@ -64,6 +71,73 @@ app.post("/create-listing", function(req,res){
     // res.send("form recieved")
 });
 
+app.get("/delete-listing/:listingid", function(req,res){
+    console.log(req.params);
+    const idtodel = req.params.listingid;
+    delListing = null;
+    for(let l of database)
+    {
+        if(l.id == idtodel)
+        {
+            delListing = l;
+            break;
+        }
+    }
+    if(delListing != null)
+        res.render('confirm-delete',{
+            "record" : delListing
+    });
+});
+
+app.post("/delete-listing/:listingid", function(req,res){
+    const idtodel = req.params.listingid;
+    let indextodel = -1;
+    for(let i = 0; i < database.length; i++)
+    {
+        if(database[i].id == idtodel)
+        {
+            indextodel = i;
+            break;
+        }
+    }
+    if(indextodel != -1)
+    {
+        database.splice(indextodel,1);
+    }
+    res.redirect('/');
+});
+
+app.get("/edit-listing/:listingid", function(req,res){
+    const idtoedit = req.params.listingid;
+    const listingToEdit = database.find(function(record) { 
+        return record.id == idtoedit;
+    });
+    res.render('editlisting',{
+        record : listingToEdit
+    });
+});
+
+app.post("/edit-listing/:listingid", function(req,res){
+    const idtoedit = req.params.listingid;
+    const listingIDToEdit = database.findIndex(function(record) { 
+        return record.id == idtoedit;
+    });
+    let payments = [];
+    if(Array.isArray(req.body.payments))
+        payments = req.body.payments;
+    else if(req.body.payments)
+        payments = [req.body.payments];
+    const modifiedListing = {
+        "id" :  idtoedit,
+        "title" : req.body.title,
+        "price" : req.body.price,
+        "payment" : payments,
+        "type" : req.body.type
+    };
+    database[listingIDToEdit] = modifiedListing;
+    res.redirect("/");
+});
+
 app.listen(3000, function () {
     console.log("Server has started");
-})
+});

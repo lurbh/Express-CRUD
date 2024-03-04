@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,4 +39,76 @@
 
     
 </body>
-</html>
+</html> --}}
+{{#extends "base"}}
+
+{{#block "title"}}
+    Create Listing
+{{/block}}
+
+{{#block "content"}}
+
+<div class="container">
+    <h1>Create Listing</h1>
+    <form method="POST">
+        <div class="mb-3 row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="price" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" name="price">
+            </div>
+        </div>
+        <div>
+            <label for="paymentytpe" class="col-sm-2 col-form-label">Payment Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="cod">
+                <label class="form-check-label">cod</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="cheque">
+                <label class="form-check-label">cheque</label>
+            </div>
+            <div class="form-check  form-check-inline">
+                <input class="form-check-input" type="checkbox" name="payments" value="paynow">
+                <label class="form-check-label">paynow</label>
+            </div>
+        </div>
+        <div>
+            <label for="paymentytpe" class="col-sm-2 col-form-label">Listing Type</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="electronic">
+                <label class="form-check-label">Electronic</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="entertainment">
+                <label class="form-check-label">Entertainment</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="clothing">
+                <label class="form-check-label">Clothing</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="education">
+                <label class="form-check-label">Education</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="sports">
+                <label class="form-check-label">Sports</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="type" type="radio" value="others">
+                <label class="form-check-label">Others</label>
+                {{!-- <input type="text" class="" id="others" name="others"> --}}
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+</div>
+{{/block}}
+
+{{/extends}}
