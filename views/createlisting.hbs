@@ -101,10 +101,31 @@
                 <label class="form-check-label">Sports</label>
             </div>
             <div class="form-check form-check-inline">
+                <div class="input-group"> 
+                    <div class="input-group-text"> 
+                        <input class="form-check-input" id="rad1" 
+                            type="radio" value="others" name="type" style="margin-left: 0.5em;"> 
+                        <label for="rad1" class="d-block mx-2"> 
+                            Others
+                        </label> 
+                    </div> 
+                    <input type="text" class="form-control" name="othertype"/> 
+                </div>
+            </div>
+            {{!-- <div class="form-check form-check-inline">
+                <div class="input-group" >
+                    <div class="input-group-text">
+                        <input class="form-check-input" name="type" type="radio" value="others">
+                        <label class="form-check-label">Others</label>
+                    </div>
+                    <input type="text" class="form-control" id="others" name="others">
+                </div>
+            </div> --}}
+            {{!-- <div class="form-check form-check-inline">
                 <input class="form-check-input" name="type" type="radio" value="others">
                 <label class="form-check-label">Others</label>
-                {{!-- <input type="text" class="" id="others" name="others"> --}}
-            </div>
+                <input type="text" class="form-inline" id="others" name="others">
+            </div> --}}
         </div>
         <input type="submit" class="btn btn-primary"/>
     </form>
@@ -112,3 +133,5 @@
 {{/block}}
 
 {{/extends}}
+
+

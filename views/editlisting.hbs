@@ -80,29 +80,36 @@
         <div>
             <label for="paymentytpe" class="col-sm-2 col-form-label">Listing Type</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="electronic" {{#eq record.type "eletronic"}}checked{{/eq}}>
+                <input class="form-check-input" name="type" type="radio" value="electronic" {{#eq record.type.type "eletronic"}}checked{{/eq}}>
                 <label class="form-check-label">Electronic</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="entertainment" {{#eq record.type "entertainment"}}checked{{/eq}}>
+                <input class="form-check-input" name="type" type="radio" value="entertainment" {{#eq record.type.type "entertainment"}}checked{{/eq}}>
                 <label class="form-check-label">Entertainment</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="clothing" {{#eq record.type "clothing"}}checked{{/eq}}>
+                <input class="form-check-input" name="type" type="radio" value="clothing" {{#eq record.type.type "clothing"}}checked{{/eq}}>
                 <label class="form-check-label">Clothing</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="education" {{#eq record.type "education"}}checked{{/eq}}>
+                <input class="form-check-input" name="type" type="radio" value="education" {{#eq record.type.type "education"}}checked{{/eq}}>
                 <label class="form-check-label">Education</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="sports" {{#eq record.type "sports"}}checked{{/eq}}>
+                <input class="form-check-input" name="type" type="radio" value="sports" {{#eq record.type.type "sports"}}checked{{/eq}}>
                 <label class="form-check-label">Sports</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" name="type" type="radio" value="others" {{#eq record.type "others"}}checked{{/eq}}>
-                <label class="form-check-label">Others</label>
-                {{!-- <input type="text" class="" id="others" name="others"> --}}
+                <div class="input-group"> 
+                    <div class="input-group-text"> 
+                        <input class="form-check-input" id="rad1" 
+                            type="radio" value="others" name="type" style="margin-left: 0.5em;" {{#eq record.type.type "others"}}checked{{/eq}}> 
+                        <label for="rad1" class="d-block mx-2"> 
+                            Others
+                        </label> 
+                    </div> 
+                    <input type="text" class="form-control" name="othertype" value="{{#eq record.type.type "others"}}{{record.type.value}}{{/eq}}"/> 
+                </div>
             </div>
         </div>
 

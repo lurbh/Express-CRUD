@@ -21,26 +21,36 @@ const database = [
         "title" : "Barely Used PS5",
         "price" : 675.50,
         "payment" : ["cod", "paynow"],
-        "type" : "entertainment"
+        "type" : {
+            type : "entertainment",
+            value : "entertainment"
+        }
     },
     {
         "id" : 2,
         "title" : "Used Caculus Textbok",
         "price" : 69.90,
         "payment" : ["paynow"],
-        "type" : "education"
+        "type" : {
+            type : "education",
+            value : "education"
+        }
     },
     {
         "id" : 3,
         "title" : "New Oxdog hyperlight Hes 26 floorball stick",
         "price" : 167.50,
         "payment" : ["cod", "paynow","cheque"],
-        "type" : "sports"
+        "type" : {
+            type : "sports",
+            value : "sports"
+        }
     }
 ]
 
 
 app.get("/", function(req,res){
+    console.log(database);
     res.render("index", {
         'products': database
     });
@@ -51,6 +61,7 @@ app.get("/create-listing", function(req,res){
 });
 
 app.post("/create-listing", function(req,res){
+    console.log(req.body);
     const title = req.body.title;
     const price = req.body.price;
     let payments = [];
@@ -58,7 +69,21 @@ app.post("/create-listing", function(req,res){
         payments = req.body.payments;
     else if(req.body.payments)
         payments = [req.body.payments];
-    const type =  req.body.type;
+    let type =  req.body.type;
+    if(req.body.type == "others")
+    {
+        type = {
+            type : req.body.type,
+            value : req.body.othertype
+        };
+    }
+    else
+    {
+        type = {
+            type : req.body.type,
+            value : req.body.type
+        };
+    }
     const newListing = {
         "id" : Math.floor(Math.random() * 10000 + 1),
         "title" : title,
@@ -127,12 +152,27 @@ app.post("/edit-listing/:listingid", function(req,res){
         payments = req.body.payments;
     else if(req.body.payments)
         payments = [req.body.payments];
+    let type =  req.body.type;
+    if(req.body.type == "others")
+        {
+            type = {
+                type : req.body.type,
+                value : req.body.othertype
+            };
+        }
+        else
+        {
+            type = {
+                type : req.body.type,
+                value : req.body.type
+            };
+        }
     const modifiedListing = {
         "id" :  idtoedit,
         "title" : req.body.title,
         "price" : req.body.price,
         "payment" : payments,
-        "type" : req.body.type
+        "type" : type
     };
     database[listingIDToEdit] = modifiedListing;
     res.redirect("/");
