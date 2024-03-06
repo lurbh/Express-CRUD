@@ -178,6 +178,6 @@ app.post("/edit-listing/:listingid", function(req,res){
     res.redirect("/");
 });
 
-app.listen(3000, function () {
+app.listen(5050, function () {
     console.log("Server has started");
 });
